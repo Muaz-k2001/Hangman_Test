@@ -91,14 +91,14 @@ class Hangman:
 
         while True:
             letter = input('Choose any letter: ').lower()
-            if len(letter) != 1:
-                print('Please, enter just one character')
-            else:
+            if len(letter) == 1:
+                if letter in self.list_letters:
+                    print(f'{letter} was already tried')
+                else:
+                    self.list_letters.append(letter)
                 print('Thank you')
-                
-
-
-
+            else:
+                print('Please, enter just one character')
                 
 
         # TODO 1: Ask the user for a letter iteratively until the user enters a valid letter
