@@ -3,6 +3,7 @@ Make sure you complete all the TODOs in this file.
 The prints have to contain the same text as indicated, don't add any more prints,
 or you will get 0 for this assignment.
 '''
+from operator import truediv
 import random
 
 class Hangman:
@@ -24,7 +25,7 @@ class Hangman:
         The word to be guessed picked randomly from the word_list
     word_guessed: list
         A list of the letters of the word, with '_' for each letter not yet guessed
-        For example, if the word is 'apple', the word_guessed list would be ['_', '_', '_', '_', '_']
+        For example, if the word is 'apple', the word_guessed list wou,ld be ['_', '_', '_', '_', '_']
         If the player guesses 'a', the list would be ['a', '_', '_', '_', '_']
     num_letters: int
         The number of UNIQUE letters in the word that have not been guessed yet
@@ -40,17 +41,26 @@ class Hangman:
     ask_letter()
         Asks the user for a letter.
     '''
+
+
     def __init__(self, word_list, num_lives=5):
         self.word = random.choice(word_list)
+        self.word_guessed = "['_', " + "'_', " * (len(self.word)-2) + "'_']"
+        self.num_letters = len(set(self.word))
         self.num_lives = num_lives
+        self.list_letters = []
 
         print(f'The mystery word has {len(self.word)} characters')
+        print(self.word_guessed)
 
         # TODO 2: Initialize the attributes as indicated in the docstring
         # TODO 2: Print two message upon initialization:
         # 1. "The mystery word has {len(self.word)} characters" (The number of letters is NOT the UNIQUE number of letters)
         # 2. {word_guessed}
         pass
+    
+ 
+
 
     def check_letter(self, letter) -> None:
         '''
@@ -80,12 +90,14 @@ class Hangman:
         '''
 
         while True:
-            letter = input('Choose any letter: ')
+            letter = input('Choose any letter: ').lower()
             if len(letter) != 1:
-                print('Please, enter just one character: ')
+                print('Please, enter just one character')
             else:
                 print('Thank you')
-                break
+                
+
+
 
                 
 
@@ -98,7 +110,7 @@ class Hangman:
 
 def play_game(word_list):
     # As an aid, part of the code is already provided:
-    game = Hangman(word_list, num_lives=5)
+    game = Hangman(word_list,num_lives=5)
     game.ask_letter()
     # TODO 1: To test this task, you can call the ask_letter method
     # TODO 2: To test this task, upon initialization, two messages should be printed 
