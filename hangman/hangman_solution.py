@@ -3,6 +3,7 @@ Make sure you complete all the TODOs in this file.
 The prints have to contain the same text as indicated, don't add any more prints,
 or you will get 0 for this assignment.
 '''
+from dataclasses import replace
 from operator import truediv
 import random
 
@@ -43,9 +44,11 @@ class Hangman:
     '''
 
 
+
     def __init__(self, word_list, num_lives=5):
         self.word = random.choice(word_list)
-        self.word_guessed = "['_', " + "'_', " * (len(self.word)-2) + "'_']"
+        self.word_guessed = ['_']
+        self.word_guessed = self.word_guessed * len(self.word)
         self.num_letters = len(set(self.word))
         self.num_lives = num_lives
         self.list_letters = []
@@ -74,6 +77,8 @@ class Hangman:
             The letter to be checked
 
         '''
+
+
         # TODO 3: Check if the letter is in the word. TIP: You can use the lower() method to convert the letter to lowercase
         # TODO 3: If the letter is in the word, replace the '_' in the word_guessed list with the letter
         # TODO 3: If the letter is in the word, the number of UNIQUE letters in the word that have not been guessed yet has to be reduced by 1
@@ -95,8 +100,8 @@ class Hangman:
                 if letter in self.list_letters:
                     print(f'{letter} was already tried')
                 else:
+                    print('Thank you')
                     self.list_letters.append(letter)
-                print('Thank you')
             else:
                 print('Please, enter just one character')
                 
