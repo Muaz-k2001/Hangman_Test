@@ -47,8 +47,7 @@ class Hangman:
 
     def __init__(self, word_list, num_lives=5):
         self.word = random.choice(word_list)
-        self.word_guessed = ['_']
-        self.word_guessed = self.word_guessed * len(self.word)
+        self.word_guessed = list('_' * len(self.word))
         self.num_letters = len(set(self.word))
         self.num_lives = num_lives
         self.list_letters = []
@@ -77,6 +76,14 @@ class Hangman:
             The letter to be checked
 
         '''
+        
+        letter_positioning = [i for i, L in enumerate(self.word) if L == letter]
+        # letter_positioning = the indeces (positions) at which the letter inputs match the letters in the word
+        for letter_position in letter_positioning:
+        # for the letter positions relevant to the current user input
+            self.word_guessed[letter_position] = letter
+            # change the underscore at those indeces to the letter input (revealing the letter)
+            print(self.word_guessed)
 
 
         # TODO 3: Check if the letter is in the word. TIP: You can use the lower() method to convert the letter to lowercase
@@ -102,6 +109,8 @@ class Hangman:
                 else:
                     print('Thank you')
                     self.list_letters.append(letter)
+                    self.check_letter(letter)
+                    # calls check_letter() method using the letter variable
             else:
                 print('Please, enter just one character')
                 
