@@ -84,9 +84,9 @@ class Hangman:
             letter_indices = [i for i, L in enumerate(self.word) if L == letter]
             # letter_indices = the indices (positions) at which the letter inputs match the letters in the word
             for letter_index in letter_indices:
-            # for the letter positions relevant to the current user input
+            # for the letter indices relevant to the current user input
                 self.word_guessed[letter_index] = letter
-                # change the underscore at those indeces to the letter input (revealing the letter)
+                # change the underscore at those indices to the letter input (revealing the letter)
             print(self.word_guessed)
         else:
             self.num_lives -= 1
@@ -116,6 +116,7 @@ class Hangman:
                     print(f'{letter} was already tried')
                 else:
                     self.list_letters.append(letter)
+                    # add letter to list_letters
                     self.check_letter(letter)
                     # calls check_letter() method using the letter variable
                     if self.num_lives == 0:
