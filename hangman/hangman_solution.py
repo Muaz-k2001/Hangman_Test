@@ -79,7 +79,7 @@ class Hangman:
         '''
         if letter in self.word:
             print(f'Nice! {letter} is in the word!')
-            self.num_letters = self.num_letters - 1
+            self.num_letters -= 1
             # number of unique letters reduced by 1
             letter_indices = [i for i, L in enumerate(self.word) if L == letter]
             # letter_indices = the indices (positions) at which the letter inputs match the letters in the word
@@ -89,7 +89,7 @@ class Hangman:
                 # change the underscore at those indeces to the letter input (revealing the letter)
             print(self.word_guessed)
         else:
-            self.num_lives = self.num_lives - 1
+            self.num_lives -= 1
             print(f'Sorry, {letter} is not in the word.')
             print(f'You have {self.num_lives} lives left.')
 
@@ -118,6 +118,12 @@ class Hangman:
                     self.list_letters.append(letter)
                     self.check_letter(letter)
                     # calls check_letter() method using the letter variable
+                    if self.num_lives == 0:
+                        print(f'You run out of lives. The word was {self.word}')
+                        break
+                    elif self.word_guessed.count('_') == 0:
+                        print('Congratulations, you won!')
+                        break
             else:
                 print('Please, enter just one character')
                 
