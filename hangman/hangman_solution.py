@@ -78,8 +78,11 @@ class Hangman:
         '''
         
         letter_positioning = [i for i, L in enumerate(self.word) if L == letter]
+        # letter_positioning = the indeces (positions) at which the letter inputs match the letters in the word
         for letter_position in letter_positioning:
+        # for the letter positions relevant to the current user input
             self.word_guessed[letter_position] = letter
+            # change the underscore at those indeces to the letter input (revealing the letter)
             print(self.word_guessed)
 
 
@@ -107,7 +110,7 @@ class Hangman:
                     print('Thank you')
                     self.list_letters.append(letter)
                     self.check_letter(letter)
-                    break
+                    # calls check_letter() method using the letter variable
             else:
                 print('Please, enter just one character')
                 
