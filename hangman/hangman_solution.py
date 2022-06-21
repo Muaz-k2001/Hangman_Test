@@ -111,7 +111,8 @@ class Hangman:
                     self.list_letters.append(letter)
                     self.check_letter(letter)
                     # calls check_letter() method using the letter variable
-                    #rffrewr
+                    #Testing1
+                    #Testing2
             else:
                 print('Please, enter just one character')
                 
