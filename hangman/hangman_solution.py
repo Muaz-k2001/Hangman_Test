@@ -55,6 +55,7 @@ class Hangman:
         print(f'The mystery word has {len(self.word)} characters')
         print(self.word_guessed)
 
+
         # TODO 2: Initialize the attributes as indicated in the docstring
         # TODO 2: Print two message upon initialization:
         # 1. "The mystery word has {len(self.word)} characters" (The number of letters is NOT the UNIQUE number of letters)
@@ -76,14 +77,21 @@ class Hangman:
             The letter to be checked
 
         '''
-        
-        letter_positioning = [i for i, L in enumerate(self.word) if L == letter]
-        # letter_positioning = the indeces (positions) at which the letter inputs match the letters in the word
-        for letter_position in letter_positioning:
-        # for the letter positions relevant to the current user input
-            self.word_guessed[letter_position] = letter
-            # change the underscore at those indeces to the letter input (revealing the letter)
+        if letter in self.word:
+            print(f'Nice! {letter} is in the word!')
+            self.num_letters = self.num_letters - 1
+            # number of unique letters reduced by 1
+            letter_indices = [i for i, L in enumerate(self.word) if L == letter]
+            # letter_indices = the indices (positions) at which the letter inputs match the letters in the word
+            for letter_index in letter_indices:
+            # for the letter positions relevant to the current user input
+                self.word_guessed[letter_index] = letter
+                # change the underscore at those indeces to the letter input (revealing the letter)
             print(self.word_guessed)
+        if letter not in self.word:
+            self.num_lives = self.num_lives - 1
+            print(f'Sorry, {letter} is not in the word.')
+            print(f'You have {self.num_lives} lives left.')
 
 
         # TODO 3: Check if the letter is in the word. TIP: You can use the lower() method to convert the letter to lowercase
@@ -107,12 +115,9 @@ class Hangman:
                 if letter in self.list_letters:
                     print(f'{letter} was already tried')
                 else:
-                    print('Thank you')
                     self.list_letters.append(letter)
                     self.check_letter(letter)
                     # calls check_letter() method using the letter variable
-                    #Testing1
-                    #Testing2
             else:
                 print('Please, enter just one character')
                 
