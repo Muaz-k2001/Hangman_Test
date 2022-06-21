@@ -88,7 +88,7 @@ class Hangman:
                 self.word_guessed[letter_index] = letter
                 # change the underscore at those indeces to the letter input (revealing the letter)
             print(self.word_guessed)
-        if letter not in self.word:
+        else:
             self.num_lives = self.num_lives - 1
             print(f'Sorry, {letter} is not in the word.')
             print(f'You have {self.num_lives} lives left.')
