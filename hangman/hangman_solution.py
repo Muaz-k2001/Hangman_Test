@@ -7,6 +7,7 @@ from dataclasses import replace
 from operator import truediv
 import random
 
+
 class Hangman:
     '''
     A Hangman Game that asks the user for a letter and checks if it is in the word.
@@ -92,6 +93,7 @@ class Hangman:
             self.num_lives -= 1
             print(f'Sorry, {letter} is not in the word.')
             print(f'You have {self.num_lives} lives left.')
+            self.hangman_drawing()
 
 
         # TODO 3: Check if the letter is in the word. TIP: You can use the lower() method to convert the letter to lowercase
@@ -135,6 +137,58 @@ class Hangman:
         # TODO 2. It has to be a letter that has not been tried yet. Use the list_letters attribute to check this. If it has been tried, print "{letter} was already tried".
         # TODO 3: If the letter is valid, call the check_letter method
         pass
+
+
+
+
+    def hangman_drawing(self):
+        stages = [
+                 '''
+                    ____
+                    |   |
+                    |   O
+                    |  \|/
+                    |  / \ 
+                    |____
+                 ''',
+                 '''
+                    ____
+                    |   |
+                    |   O
+                    |  \|/
+                    |
+                    |____
+                 ''',
+                 '''
+                    ____
+                    |   |
+                    |   O
+                    |   |
+                    |
+                    |____
+                 ''',
+                 '''
+                    ____
+                    |   |
+                    |   O
+                    |   
+                    |
+                    |____
+                 ''',
+                 '''
+                    ____
+                    |   |
+                    |
+                    |
+                    |
+                    |____
+                 ''']
+        if self.num_lives >= 0:
+            print(stages[self.num_lives])
+        pass    
+
+
+
 
 def play_game(word_list):
     # As an aid, part of the code is already provided:
