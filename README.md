@@ -1,4 +1,4 @@
-# Hangman_Test
+## Hangman_Test
 
 A repository containing the finished work of creating a hangman game using python.
 
