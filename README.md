@@ -13,4 +13,5 @@ Completed and called the check_letter() method using the letter from the ask_let
 
 Milestone 4:
 Completed the project by adding win and lose conditions in the ask_letter() method which completes the game.
-'\n'(BONUS) Added the hangman drawings for each stage of life loss.
+
+(BONUS) Added the hangman drawings for each stage of life loss.
